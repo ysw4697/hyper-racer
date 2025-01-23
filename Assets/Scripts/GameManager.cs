@@ -115,6 +115,13 @@ public class GameManager : MonoBehaviour
             _activeRoads.Add(road);
         }
     }
+
+    public void DestroyRoad(GameObject road)
+    {
+        road.SetActive(false);
+        _activeRoads.Remove(road);
+        _roadPool.Enqueue(road);
+    }
     
     #endregion
    
