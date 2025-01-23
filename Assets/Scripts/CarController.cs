@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    void Start()
+    public void Move(float direction)
     {
-        
-    }
-
-    void Update()
-    {
-        
+        transform.Translate(Vector3.right * (direction * Time.deltaTime));
     }
 }
