@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -14,6 +15,10 @@ public class GameManager : MonoBehaviour
     // UI 관련
     [SerializeField] private MoveButton leftMoveButton;
     [SerializeField] private MoveButton rightMoveButton;
+    [SerializeField] private TMP_Text gasText;
+    
+    // 자동차
+    private CarController _carController;
     
     // 도로 오브젝트 풀
     private Queue<GameObject> _roadPool = new ();
@@ -64,6 +69,12 @@ public class GameManager : MonoBehaviour
         {
             activeRoad.transform.Translate(Vector3.back * Time.deltaTime);
         }
+        
+        // Gas 정보 출력
+        if (_carController != null)
+        {
+            gasText.text = $" Gas: {_carController.Gas}";
+        }
     }
     
     private void StartGame()
@@ -72,12 +83,12 @@ public class GameManager : MonoBehaviour
         SpwanRoad(Vector3.zero);
         
         // 자동차 생성
-        CarController carController = Instantiate(carPrefab, new Vector3(0.0f ,0.0f, -3.0f), Quaternion.identity)
+        _carController = Instantiate(carPrefab, new Vector3(0.0f ,0.0f, -3.0f), Quaternion.identity)
                                       .GetComponent<CarController>();
         
         // Left, Right move button에 자동차 컨트롤 기능 적용
-        leftMoveButton.OnMoveButtonDown += () => carController.Move(-1.0f);
-        rightMoveButton.OnMoveButtonDown += () => carController.Move(1.0f);
+        leftMoveButton.OnMoveButtonDown += () => _carController.Move(-1.0f);
+        rightMoveButton.OnMoveButtonDown += () => _carController.Move(1.0f);
     }
     
     #region 도로 생성 및 관리
