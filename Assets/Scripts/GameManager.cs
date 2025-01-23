@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
     // 도로 이동
     private List<GameObject> _activeRoads = new ();
     
+    // 상태
+    public enum State { Start, Play, End }
+    public State GameState { get; private set; } = State.Start;
+    
     // 싱글톤
     public static GameManager _instance;
     public static GameManager Instance
