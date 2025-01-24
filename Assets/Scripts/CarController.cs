@@ -25,7 +25,9 @@ public class CarController : MonoBehaviour
             }
             yield return new WaitForSeconds(1.0f);
         }
+        
         // TODO: 게임 종료 메서드 구현 예정
+        GameManager.Instance.EndGame();
     }
     
     /// <summary>
@@ -35,7 +37,7 @@ public class CarController : MonoBehaviour
     public void Move(float direction)
     {
         transform.Translate(Vector3.right * (direction * moveSpeed * Time.deltaTime));
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -2.0f, 2.0f), 0.0f, transform.position.z);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -1.5f, 1.5f), 0.0f, transform.position.z);
     }
 
     /// <summary>
@@ -48,7 +50,8 @@ public class CarController : MonoBehaviour
         {
             gas += 30;
             
-            // TODO: 가스 아이템 풀링 디스트로이어 메서드
+            // 가스 아이템 숨기기
+            other.gameObject.SetActive(false);
         }
     }
 }
