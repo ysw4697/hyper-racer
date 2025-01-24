@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gas: 100
-  moveSpeed: 2
+  moveSpeed: 5
 --- !u!65 &5625610935686519619
 BoxCollider:
   m_ObjectHideFlags: 0
