@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     [SerializeField] private int gas = 100;
-    [SerializeField] private float moveSpeed = 1.0f;
+    [SerializeField] private float moveSpeed = 2.0f;
     
     public int Gas { get => gas; }      // Gas 정보
 
@@ -19,11 +19,12 @@ public class CarController : MonoBehaviour
         while (true)
         {
             gas -= 10;
+            yield return new WaitForSeconds(1.0f);
+            
             if (gas <= 0)
             {
                 break;
             }
-            yield return new WaitForSeconds(1.0f);
         }
         
         // TODO: 게임 종료 메서드 구현 예정
