@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     private int _roadPoolSize = 3;
     
     // 도로 이동
+    private float _roadMoveSpeed = 10.0f;
     private List<GameObject> _activeRoads = new ();
     
     // 만들어지는 도로의 index
@@ -61,8 +62,6 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
-
-        Time.timeScale = 5.0f;
     }
 
     private void Start()
@@ -89,7 +88,7 @@ public class GameManager : MonoBehaviour
                 // 활성화된 도로를 아래로 서서히 이동
                 foreach (var activeRoad in _activeRoads)
                 {
-                    activeRoad.transform.Translate(Vector3.back * Time.deltaTime);
+                    activeRoad.transform.Translate(Vector3.back * (_roadMoveSpeed * Time.deltaTime));
                 }
         
                 // Gas 정보 출력
@@ -207,7 +206,6 @@ public class GameManager : MonoBehaviour
         // 가스 아이템 생성
         if (_roadIndex > 0 && _roadIndex % 2 == 0)
         {
-            Debug.Log(_roadIndex);
             road.GetComponent<RoadController>().SpawnGas();
         }
         

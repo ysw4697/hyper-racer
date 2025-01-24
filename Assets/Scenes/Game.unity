@@ -953,7 +953,7 @@ MonoBehaviour:
   rightMoveButton: {fileID: 1147048313}
   gasText: {fileID: 1408786377}
   startPanelPrefab: {fileID: 5781941328533725779, guid: 33304618002d91345b0631ebe6d018bd, type: 3}
-  endPanelPrefab: {fileID: 0}
+  endPanelPrefab: {fileID: 5781941328533725779, guid: 3b97efafd4ab2d54e8d2482223975c10, type: 3}
   canvasTransform: {fileID: 1014862124}
 --- !u!4 &1864773697
 Transform:
