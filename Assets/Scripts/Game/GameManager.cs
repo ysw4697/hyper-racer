@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     
     // 도로 오브젝트 풀
     private Queue<GameObject> _roadPool = new ();
-    private int _roadPoolSize = 3;
+    private int _poolSize = 3;
     
     // 도로 이동
     private float _roadMoveSpeed = 10.0f;
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         // Road 오브젝트 풀 초기화
-        InitializeRoadPool();
+        InitializePool();
         
         // 게임 상태를 Start로 시작
         GameState = State.Start;
@@ -178,9 +178,9 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// 도로 오브젝트 풀 초기화
     /// </summary>
-    private void InitializeRoadPool()
+    private void InitializePool()
     {
-        for (int i = 0; i < _roadPoolSize; i++)
+        for (int i = 0; i < _poolSize; i++)
         {
             GameObject road = Instantiate(roadPrefab);
             road.SetActive(false);
@@ -210,7 +210,7 @@ public class GameManager : MonoBehaviour
         {
             road.GetComponent<RoadController>().SpawnGas();
         }
-        
+
         // 활성화된 길을 움직이기 위해 list에 저장
         _activeRoads.Add(road);
         _roadIndex++;

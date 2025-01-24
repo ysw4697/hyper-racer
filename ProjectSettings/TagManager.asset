@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Gas
+  - Enemy_Car
   layers:
   - Default
   - TransparentFX
