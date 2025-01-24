@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     private List<GameObject> _activeRoads = new ();
     
     // 만들어지는 도로의 index
-    private int _roadIndex = 1;
+    private int _roadIndex = 0;
     
     // 상태
     public enum State { Start, Play, End }
@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
+
+        Time.timeScale = 5.0f;
     }
 
     private void Start()
@@ -168,6 +170,7 @@ public class GameManager : MonoBehaviour
         // 가스 아이템 생성
         if (_roadIndex > 0 && _roadIndex % 2 == 0)
         {
+            Debug.Log(_roadIndex);
             road.GetComponent<RoadController>().SpawnGas();
         }
         
